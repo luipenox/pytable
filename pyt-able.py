@@ -16,16 +16,15 @@ def create_demo(filename="example.xlsx", title="Example"):
         worksheet.merge_cells('A1:F1')
         worksheet["A1"] = title
 
-        set_columns_width(worksheet, 50, for_all=True)
-        set_columns_width(worksheet, (50, 20), for_all=True)
-        set_rows_height(worksheet, (20, 10, 20, 15))
+        set_columns_width(worksheet, 25, for_all=True, col_max=6)
+        set_rows_height(worksheet, 25, for_all=True, row_max=30)
 
     finally:
         workbook.save(filename=filename)
 
 
-def set_columns_width(worksheet, widths, for_all=False, col_min=1, col_max=16384):
-    if col_min > col_max or col_max < 1 or col_min < 1 or col_max > 16384 or col_min > 16384:
+def set_columns_width(worksheet, widths, for_all=False, col_min=1, col_max=100):
+    if col_min > col_max or col_max < 1 or col_min < 1 or col_max > 100 or col_min > 100:
         raise AssertionError("Wrong col_min/col_max parameters")
 
     if type(widths) not in (list, tuple, int):
@@ -49,9 +48,29 @@ def set_columns_width(worksheet, widths, for_all=False, col_min=1, col_max=16384
                 worksheet.column_dimensions[get_column_letter(no)].width = width
 
 
-def set_rows_height(worksheet, heights, for_all=False):
-    for no, height in enumerate(heights, 1):
-        worksheet.row_dimensions[no].height = height
+def set_rows_height(worksheet, heights, for_all=False, row_min=1, row_max=100):
+    if row_min > row_max or row_max < 1 or row_min < 1 or row_max > 100 or row_min > 100:
+        raise AssertionError("Wrong row_min/row_max parameters")
+
+    if type(heights) not in (list, tuple, int):
+        if for_all:
+            raise AssertionError("heights argument is wrong with for_all (must be list or tuple or int)")
+        else:
+            raise AssertionError("heights argument is wrong without for_all (must be list or tuple)")
+
+    if for_all:
+        if type(heights) in (list, tuple):
+            for no in range(row_min, row_max+1):
+                worksheet.row_dimensions[no].height = heights[no % len(heights)-1]
+
+        elif type(heights) == int:
+            for no in range(row_min, row_max + 1):
+                worksheet.row_dimensions[no].height = heights
+
+    else:
+        if type(heights) in (list, tuple):
+            for no, height in enumerate(heights, 1):
+                worksheet.row_dimensions[no].height = height
 
 
 create_demo()
