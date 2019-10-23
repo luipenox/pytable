@@ -8,12 +8,14 @@ from openpyxl.utils import get_column_letter
 def create_demo(filename="example.xlsx", title="Example"):
     workbook = Workbook()
 
-    sheet = workbook.active
-    sheet.title = title
+    worksheet = workbook.active
+    worksheet.title = title
 
-    sheet["A1"] = "This is EXAMPLE"
+    # merge cells for header
+    worksheet.merge_cells('A1:F1')
+    worksheet["A1"] = title
 
-    set_columns_width(sheet, (20, 20, 20, 15))
+    # set_columns_width(worksheet, (20, 20, 20, 15))
 
     workbook.save(filename=filename)
 
@@ -23,4 +25,4 @@ def set_columns_width(worksheet, widths):
         worksheet.column_dimensions[get_column_letter(no)].width = width
 
 
-# create_demo()
+create_demo()
