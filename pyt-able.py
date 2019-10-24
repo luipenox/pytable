@@ -3,6 +3,7 @@
 
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
+from openpyxl.styles import Alignment
 
 
 def create_demo(filename="example.xlsx", title="Example"):
@@ -18,6 +19,8 @@ def create_demo(filename="example.xlsx", title="Example"):
 
         set_columns_width(worksheet, 25, for_all=True, col_max=6)
         set_rows_height(worksheet, 25, for_all=True, row_max=30)
+
+        set_area_alignment(worksheet, 'A1:A30', horizontal='right', indent=1)
 
     finally:
         workbook.save(filename=filename)
@@ -72,5 +75,10 @@ def set_rows_height(worksheet, heights, for_all=False, row_min=1, row_max=100):
             for no, height in enumerate(heights, 1):
                 worksheet.row_dimensions[no].height = height
 
+
+def set_area_alignment(worksheet, area, horizontal='left', vertical='center', indent=0):
+    for row in worksheet[f'{area}']:
+        for cell in row:
+            cell.alignment = Alignment(horizontal=horizontal, vertical=vertical, indent=indent)
 
 create_demo()
