@@ -81,4 +81,9 @@ def set_area_alignment(worksheet, area, horizontal='left', vertical='center', in
         for cell in row:
             cell.alignment = Alignment(horizontal=horizontal, vertical=vertical, indent=indent)
 
+
+def set_area_font(worksheet, area, size=12, font_type="Calibri", bold=False, italic=False, underscore=False):
+    ...
+
+
 create_demo()
