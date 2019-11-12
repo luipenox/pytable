@@ -1,4 +1,4 @@
-# pyt-able.py
+# pytable.py
 # module for EXCEL exports
 
 from openpyxl import Workbook
@@ -6,7 +6,7 @@ from openpyxl.utils import get_column_letter
 from openpyxl.styles import Alignment
 
 
-def create_demo(filename="example.xlsx", title="Example"):
+def create_demo(filename="demo_openpyxl.xlsx", title="DEMO (openpyxl)"):
     workbook = Workbook()
 
     try:
@@ -83,7 +83,7 @@ def set_area_alignment(worksheet, area, horizontal='left', vertical='center', in
 
 
 def set_area_font(worksheet, area, size=12, font_type="Calibri", bold=False, italic=False, underscore=False):
-    "set font to selected area"
+    """set font to selected area"""
     ...
 
 
