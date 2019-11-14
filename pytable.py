@@ -16,11 +16,6 @@ def create_demo(filename="demo_openpyxl.xlsx", title="DEMO (openpyxl)"):
         # merge cells for header
         worksheet.merge_cells('A1:F1')
         worksheet["A1"] = title
-        a = worksheet["A1"]
-        print(a.value)
-        a = worksheet.cell(row=2, column=3, value=6)
-        print(a)
-        print(a.value)
 
         set_area_alignment(worksheet, 'A1:A1', horizontal='center')
         set_area_font(worksheet, 'A1:A1', size=24, name='Calibri Light', bold=True, color='AA0022', underline='single')
