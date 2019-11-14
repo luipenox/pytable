@@ -16,6 +16,12 @@ def create_demo(filename="demo_openpyxl.xlsx", title="DEMO (openpyxl)"):
         # merge cells for header
         worksheet.merge_cells('A1:F1')
         worksheet["A1"] = title
+        worksheet["A2"].value = title
+        a = worksheet["A1"]
+        print(a.value)
+        a = worksheet.cell(row=2, column=3, value=6)
+        print(a)
+        print(a.value)
 
         set_area_alignment(worksheet, 'A1:A1', horizontal='center')
         set_area_font(worksheet, 'A1:A1', size=24, name='Calibri Light', bold=True, color='AA0022', underline='single')
@@ -24,6 +30,13 @@ def create_demo(filename="demo_openpyxl.xlsx", title="DEMO (openpyxl)"):
         set_columns_width(worksheet, 25, for_all=True, col_max=6)
         set_rows_height(worksheet, 25, for_all=True, row_min=2, row_max=30)
 
+        for row in worksheet['A4:F5']:
+            for cell in row:
+                print(get_column_letter(cell.column), cell.row, cell.value)
+
+        for row in worksheet.values:
+            for value in row:
+                print(value)
 
     finally:
         workbook.save(filename=filename)
@@ -93,3 +106,7 @@ def set_area_font(worksheet, area, size=12, name="Calibri", bold=False, italic=F
 
 
 create_demo()
+
+import random
+for _ in range(100):
+    print(f"{random.randrange(5, 20):02}:{random.randrange(0, 60):02}:{random.randrange(0, 60):02}")
