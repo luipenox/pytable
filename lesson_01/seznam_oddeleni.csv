@@ -1,24 +1,6 @@
-osobní èíslo;jméno;pøíjmení;oddìlení;místo;telefon
-120558;Karel;Knápek;vývoj;112;475225744
-120568;Linda;Novotná;IT;205;475225754
-120564;Dana;Hníková;vývoj;103;475224875
-120560;František;Hajný;vedení;107;475223996
-120556;Alena;Plachá;vedení;108;475223117
-120552;Petr;Brodský;øeditel;101;475222238
-120548;Petra;Balvínová;IT;205;475221359
-120544;Jiøí;Barták;vývoj;130;475220480
-120540;Daniela;Dlouhá;vnitøní správa;203;475219601
-120536;Ludvík;Pem;vedení;106;475218722
-120532;Karel;Harbiš;vývoj;104;475217843
-120528;Tomáš;Schöll;vývoj;105;475216964
-120524;Jana;Hassová;vývoj;105;475216085
-120520;Jiøina;Halová;IT;205;475215206
-120516;Helena;Hladká;vedení;102;475214327
-120512;Olga;Šípová;vnitøní správa;204;475213448
-120508;Petra;Velká;výroba;130;475212569
-120504;Jan;Hráblo;výroba;130;475211690
-120500;Eduard;Fill;výroba;123;475210811
-120496;Jiøí;Kott;výroba;158;475209932
-120492;Alena;Drsná;výroba;220;475209053
-120488;Lenka;Krylová;výroba;120;475208174
-120484;Dana;Nekoneèná;výroba;157;475207295
+Èíslo oddìlení;Název oddìlení
+1005;Vývoj
+1004;Human Resource
+1003;Výroba
+1002;Sekretariát
+1001;Øeditel
